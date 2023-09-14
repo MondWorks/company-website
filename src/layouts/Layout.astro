@@ -1,0 +1,64 @@
+---
+import favIcon from '~/assets/favicons/favicon.ico';
+import favIconSvg from '~/assets/favicons/favicon.svg';
+import appleTouchIcon from '~/assets/favicons/apple-touch-icon.png';
+
+interface Props {
+  title: string;
+  description: string;
+}
+
+const { title, description } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <link rel="shortcut icon" href={favIcon} />
+    <link rel="icon" type="image/svg+xml" href={favIconSvg.src} />
+    <link rel="mask-icon" href={favIconSvg.src} color="#86BEB7" />
+    <link rel="apple-touch-icon" sizes="180x180" href={appleTouchIcon.src} />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="description" content={description} />
+    <title>{title}</title>
+
+    <script is:inline define:vars={{ defaultTheme: 'system' }}>
+      function applyTheme(theme) {
+        if (theme === 'dark') {
+          document.documentElement.classList.add('dark');
+        } else {
+          document.documentElement.classList.remove('dark');
+        }
+        const matches = document.querySelectorAll('[data-aw-toggle-color-scheme] > input');
+
+        if (matches && matches.length) {
+          matches.forEach((elem) => {
+            elem.checked = theme !== 'dark';
+          });
+        }
+      }
+
+      if ((defaultTheme && defaultTheme.endsWith(':only')) || (!localStorage.theme && defaultTheme !== 'system')) {
+        applyTheme(defaultTheme.replace(':only', ''));
+      } else if (
+        localStorage.theme === 'dark' ||
+        (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)
+      ) {
+        applyTheme('dark');
+      } else {
+        applyTheme('light');
+      }
+    </script>
+  </head>
+  <body class="antialiased">
+    <slot />
+  </body>
+</html>
+<style is:global>
+  img {
+    content-visibility: auto;
+  }
+</style>

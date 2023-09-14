@@ -1,0 +1,4 @@
+User-agent: *
+Disallow:
+
+Sitemap: https://mond.works/sitemap-index.xml

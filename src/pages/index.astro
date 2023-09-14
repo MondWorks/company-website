@@ -1,0 +1,12 @@
+---
+import logo from '~/assets/logo.svg?raw';
+import Layout from '~/layouts/Layout.astro';
+---
+
+<Layout title="MondWorks Inc." description="MondWorks Inc.">
+  <main>
+    <div class="flex min-h-screen flex-col items-center justify-center bg-gray-900 p-10">
+      <div class="w-72 max-w-[90vw]"><Fragment set:html={logo} /></div>
+    </div>
+  </main>
+</Layout>
