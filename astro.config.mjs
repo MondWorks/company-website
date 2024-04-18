@@ -3,15 +3,14 @@ import { fileURLToPath } from 'url';
 import { defineConfig } from 'astro/config';
 import tailwind from '@astrojs/tailwind';
 import sitemap from '@astrojs/sitemap';
-import compress from 'astro-compress';
-
+import playformCompress from '@playform/compress';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 // https://astro.build/config
 export default defineConfig({
   site: 'https://mond.works',
   output: 'static',
-  integrations: [sitemap(), compress(), tailwind()],
+  integrations: [sitemap(), tailwind(), playformCompress()],
   vite: {
     resolve: {
       alias: {

@@ -1,12 +1,29 @@
 ---
 import logo from '~/assets/logo.svg?raw';
 import Layout from '~/layouts/Layout.astro';
+import github from '~/assets/github.svg?raw';
+import linkedin from '~/assets/linkedin.svg?raw';
 ---
 
 <Layout title="MondWorks Inc." description="MondWorks Inc.">
   <main>
     <div class="flex min-h-screen flex-col items-center justify-center bg-gray-900 p-10">
       <div class="w-72 max-w-[90vw]"><Fragment set:html={logo} /></div>
+      <div class="mt-8 flex flex-col space-y-2 font-medium text-slate-100">
+        <a
+          href="https://github.com/Arbarwings"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="flex items-center gap-2"><div class="h-8 w-8"><Fragment set:html={github} /></div> @Arbarwings</a
+        >
+        <a
+          href="https://www.linkedin.com/in/melvin-oostendorp/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="flex items-center gap-2"
+          ><div class="h-8 w-8"><Fragment set:html={linkedin} /></div> @Melvin-Oostendorp</a
+        >
+      </div>
     </div>
   </main>
 </Layout>
